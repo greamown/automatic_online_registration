@@ -26,5 +26,5 @@ python3 auto_demo.py -e email@gmail.com -i A123456789 -hour 7 -min 0
 - -min: Required minute of login 
 
 <div align="center">
-  <img width="100%" height="100%" src="docs/login.png">
+  <img width="80%" height="80%" src="docs/login.png">
 </div>
