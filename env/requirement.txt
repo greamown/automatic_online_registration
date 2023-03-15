@@ -1,0 +1,8 @@
+Pillow
+pytesseract
+webdriver-manager
+ddddocr
+opencv-python==4.5.5.64
+jupyter 
+notebook 
+selenium
