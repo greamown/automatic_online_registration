@@ -6,7 +6,8 @@ A registration program have auto-login, auto-submit in self-setting time in [Onl
 
 ### Pre-requirements
 * Environment
-  - Python 3.8.10
+  - Python **3.8.10**
+
 * Python package
   ```Shell
   pip install -r ./env/requirements.txt
@@ -15,7 +16,6 @@ A registration program have auto-login, auto-submit in self-setting time in [Onl
   ```
   You must be setting draft and fill any data in all table.
   ```
-
 ### Demo
 ```
 python3 auto_demo.py -e email@gmail.com -i A123456789 -hour 7 -min 0

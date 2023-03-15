@@ -1,6 +1,7 @@
+__pycache__/
+*/__pycache__/
 *.png
 *.zip
 *.deb
-*.chromedriver
 driver/*
-docs/*
+!login.png
