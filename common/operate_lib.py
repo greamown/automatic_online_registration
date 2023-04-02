@@ -8,6 +8,7 @@ def login(driver: webdriver, email:str, id:str):
     # 抓取下拉選單元件
     select = Select(driver.find_element(By.NAME, 'ctl00$ContentPlaceHolder1$apply_nation'))
     select.select_by_index(1)
+    time.sleep(0.5)
     # Writting 
     driver.find_element(By.NAME, 'ctl00$ContentPlaceHolder1$apply_sid').send_keys(id)
     driver.find_element(By.NAME, 'ctl00$ContentPlaceHolder1$apply_email').send_keys(email)
@@ -67,3 +68,4 @@ def final_step(driver: webdriver):
             result(driver)
         else:
             break
+    return True

@@ -14,22 +14,22 @@ def verfi_code_ocr(driver: webdriver, ID:str) -> str:
     cv2.imwrite(IMAGE_PAHT, decoded)
     from PIL import Image
     img = Image.open(IMAGE_PAHT)
-    imgry = img.convert('L')
-    _, threshold = cv2.threshold(np.array(imgry), 140, 255, cv2.THRESH_BINARY)
+    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
+    blur = cv2.medianBlur(img, 3)
+    cv2.imshow("docs/blur.jpg", blur)
+    gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
+    cv2.imshow("docs/gray.jpg", gray)
+    gray = cv2.fastNlMeansDenoising(gray, None, 40, 7, 21)
+    cv2.imshow("docs/noise.jpg", gray)
+    _, threshold = cv2.threshold(np.array(gray), 140, 255, cv2.THRESH_BINARY)
+    cv2.imshow("dTHRESH_BINARY_INV", threshold)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
     img = Image.fromarray(threshold)
-    
-#     # 灰階處理
-#     gray = cv2.cvtColor(np.array(img), cv2.COLOR_BGR2GRAY)
-#     _, threshold = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
-#     # 雜訊處理
-#     noise = np.random.normal(0, 15, threshold.shape)
-#     noise = np.clip(threshold +noise, 0, 255).astype('uint8')
-#     guassian = cv2.blur(noise, (3, 3))
-#     img = Image.fromarray(guassian)
 
     # 最後存回 PIL Image
     img.save(CAPTURE)
-    ocr = ddddocr.DdddOcr()
+    ocr = ddddocr.DdddOcr(show_ad=False)
     return ocr.classification(img)
 
 def element_present(driver: webdriver, key:str):
