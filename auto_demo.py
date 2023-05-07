@@ -8,10 +8,10 @@ from common.operate_lib import first_step, two_step, final_step
 def main(args):
     clear = "cls" if sys.platform == "win32" else "clear"
     second = 0
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     while True:
         today_now = datetime.now()
         print ("Current date and time = %s" % today_now)
-        driver = webdriver.Chrome(ChromeDriverManager().install())
         subprocess.run(clear, shell=True)
         today_at = today_now.replace(hour=int(args.hour), minute=int(args.minute), second=second)
         if today_now == today_at:
